@@ -1,0 +1,6 @@
+FROM node:lts-alpine
+RUN mkdir -p /usr/backend
+WORKDIR /usr/backend
+COPY package*.json ./
+RUN npm install
+COPY . .
