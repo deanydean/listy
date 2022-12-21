@@ -3,7 +3,11 @@ import { config } from 'dotenv';
 
 config();
 
-if (!process.env.PORT || !process.env.DB_URI || !process.env.DB_NAME) {
+if (
+  process.env.PORT === undefined ||
+  process.env.DB_URI === undefined ||
+  process.env.DB_NAME === undefined
+) {
   throw new Error('Missing required environment variables.');
 }
 

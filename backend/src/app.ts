@@ -24,8 +24,7 @@ export class App {
     this.server.use(helmet());
   }
 
-  registerFallbacks(): void {
-  }
+  registerFallbacks(): void {}
 
   registerRoutes(): void {
     this.server.use('/api', this.router);
