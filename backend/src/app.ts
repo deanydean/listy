@@ -1,5 +1,7 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
+
 import helmet from 'helmet';
+import { logger } from './middleware/logger';
 
 export class App {
   readonly server;
@@ -22,11 +24,16 @@ export class App {
   registerMiddleware(): void {
     this.server.use(express.json());
     this.server.use(helmet());
+    this.server.use(logger);
   }
 
   registerFallbacks(): void {}
 
   registerRoutes(): void {
+    this.server.get('/test', async (req: Request, res: Response) => {
+      res.status(200).send('Server is running!');
+    });
+
     this.server.use('/api', this.router);
   }
 }

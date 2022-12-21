@@ -54,10 +54,7 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "node",
-    "setupFiles": [
-      "dotenv/config"
-    ]
+    "testEnvironment": "node"
   },
   "prettier": {
     "trailingComma": "es5",
