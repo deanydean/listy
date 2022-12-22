@@ -3,14 +3,28 @@ import './globals.css';
 import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { ThemeProvider } from 'styled-components';
+import defaultTheme from '../src/theme';
 import reportWebVitals from './reportWebVitals';
+import styled from 'styled-components';
+
+const StyledMain = styled.main`
+  max-width: ${(props) => props.theme.sizes.contentMaxWidth};
+  padding: 0 ${(props) => props.theme.sizes.spacing.xs};
+  margin: 0 auto;
+  margin-bottom: 120px;
+`;
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={defaultTheme}>
+      <StyledMain>
+        <App />
+      </StyledMain>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
