@@ -13,6 +13,9 @@ const StyledMain = styled.main`
   padding: 0 ${(props) => props.theme.sizes.spacing.xs};
   margin: 0 auto;
   margin-bottom: 120px;
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fonts.sizes.s};
+  color: ${(props) => props.theme.colours.textPrimary};
 `;
 
 const root = ReactDOM.createRoot(
