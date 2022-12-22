@@ -4,12 +4,14 @@ import { getMockReq, getMockRes } from '@jest-mock/express';
 import { ListModel } from '../../../src/models/list.model';
 import { Response } from '../../../src/models/response.model';
 import { createContainer } from '../../../src/container';
+import express from 'express';
 
 const { res, next } = getMockRes();
 const req = getMockReq();
 
 jest.mock('../../../src/services/lists/repository');
-const container = createContainer(true);
+const router = express.Router();
+const container = createContainer(router, true);
 const service = container.services.lists;
 
 describe('services/lists/controller', () => {

@@ -12,7 +12,7 @@ export class App {
   constructor(useTestDb: boolean = false) {
     this.server = express();
     this.router = express.Router();
-    this.container = createContainer(useTestDb);
+    this.container = createContainer(this.router, useTestDb);
 
     this.setHeaders();
     this.registerMiddleware();
@@ -33,10 +33,11 @@ export class App {
   registerFallbacks(): void {}
 
   registerRoutes(): void {
+    // Service routes (this.router) are registered in container.ts via DI.
+    this.server.use('/api', this.router);
+
     this.server.get('/test', async (req: Request, res: Response) => {
       res.status(200).send('Server is running!');
     });
-
-    this.server.use('/api', this.router);
   }
 }

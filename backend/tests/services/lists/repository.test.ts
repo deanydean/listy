@@ -3,8 +3,10 @@ import { expect, test } from '@jest/globals';
 import { ListModel } from '../../../src/models/list.model';
 import { Response } from '../../../src/models/response.model';
 import { createContainer } from '../../../src/container';
+import express from 'express';
 
-const container = createContainer(true);
+const router = express.Router();
+const container = createContainer(router, true);
 const service = container.services.lists;
 
 const newList: ListModel = {

@@ -1,13 +1,14 @@
 import * as middleware from '../../src/middleware/logger';
 
+import { TestApp, getTestServer } from '../helpers';
 import { expect, jest, test } from '@jest/globals';
 
 import express from 'express';
-import { getTestServer } from '../helpers';
 import request from 'supertest';
 
 jest.spyOn(middleware, 'createLog');
 
+let testApp: TestApp;
 let server: express.Application;
 
 describe('logger middleware', () => {
@@ -19,7 +20,8 @@ describe('logger middleware', () => {
   });
 
   beforeAll(async () => {
-    server = getTestServer();
+    testApp = getTestServer();
+    server = testApp.server;
   });
 
   test('requests to valid routes are logged', async () => {

@@ -1,8 +1,9 @@
 import { Db } from '../../models/db.model';
 import { ListModel } from '../../models/list.model';
+import { Repository } from '../../models/repository.model';
 import { Response } from '../../models/response.model';
 
-export class ListsRepository {
+export class ListsRepository implements Repository {
   readonly db: Db;
 
   constructor(database: Db) {

@@ -1,10 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 
+import { Controller } from '../../models/controller.model';
 import { ListModel } from '../../models/list.model';
 import { ListsRepository } from './repository';
 
-export class ListsController {
-  private repo: ListsRepository;
+export class ListsController implements Controller<ListsRepository> {
+  readonly repo: ListsRepository;
 
   constructor(repo: ListsRepository) {
     this.repo = repo;
@@ -19,6 +20,7 @@ export class ListsController {
       const response = await this.repo.getLists();
       res.status(response.status).send(response.data);
     } catch (error) {
+      console.error(error);
       next(error);
     }
   }
