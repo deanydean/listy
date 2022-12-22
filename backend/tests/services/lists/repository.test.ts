@@ -5,7 +5,7 @@ import { Response } from '../../../src/models/response.model';
 import { createContainer } from '../../../src/container';
 
 const container = createContainer(true);
-const repository = container.repositories.lists;
+const service = container.services.lists;
 
 const newList: ListModel = {
   title: 'test',
@@ -16,7 +16,7 @@ describe('services/lists/controller', () => {
   describe('ListsRepository', () => {
     describe('getLists()', () => {
       test('returns a Response object', async () => {
-        const value = await repository.getLists();
+        const value = await service.repository.getLists();
         expect(value).toBeInstanceOf(Response);
         expect(value.status).toBe(200);
       });
@@ -24,7 +24,7 @@ describe('services/lists/controller', () => {
 
     describe('createList()', () => {
       test('returns a Response object', async () => {
-        const value = await repository.createList(newList);
+        const value = await service.repository.createList(newList);
         expect(value).toBeInstanceOf(Response);
         expect(value.status).toBe(200);
       });
@@ -32,7 +32,7 @@ describe('services/lists/controller', () => {
 
     describe('editList()', () => {
       test('returns a Response object', async () => {
-        const value = await repository.editList('fake_id', newList);
+        const value = await service.repository.editList('fake_id', newList);
         expect(value).toBeInstanceOf(Response);
         expect(value.status).toBe(200);
       });
@@ -40,7 +40,7 @@ describe('services/lists/controller', () => {
 
     describe('deleteList()', () => {
       test('returns a Response object', async () => {
-        const value = await repository.deleteList('fake_id');
+        const value = await service.repository.deleteList('fake_id');
         expect(value).toBeInstanceOf(Response);
         expect(value.status).toBe(200);
       });
