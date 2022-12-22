@@ -2,6 +2,7 @@ import { Db } from './models/db.model';
 import { ListsController } from './services/lists/controller';
 import { ListsRepository } from './services/lists/repository';
 import { ListsRoutes } from './services/lists/routes';
+import { ListsValidator } from './services/lists/validators';
 import { MongoDb } from './shared/mongodb';
 import { TestDb } from './shared/testdb';
 import express from 'express';
@@ -12,6 +13,7 @@ export interface DependencyContainer {
     lists: {
       repository: ListsRepository;
       controller: ListsController;
+      validator: ListsValidator;
       routes: ListsRoutes;
     };
   };
@@ -26,7 +28,8 @@ export function createContainer(
   // Service components
   const listsRepository = new ListsRepository(db);
   const listsController = new ListsController(listsRepository);
-  const listsRoutes = new ListsRoutes(router, listsController);
+  const listsValidator = new ListsValidator();
+  const listsRoutes = new ListsRoutes(router, listsController, listsValidator);
 
   return {
     database: db,
@@ -34,6 +37,7 @@ export function createContainer(
       lists: {
         repository: listsRepository,
         controller: listsController,
+        validator: listsValidator,
         routes: listsRoutes,
       },
     },

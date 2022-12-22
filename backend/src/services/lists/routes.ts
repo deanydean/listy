@@ -1,17 +1,25 @@
 import { ListsController } from './controller';
+import { ListsValidator } from './validators';
 import { Router } from 'express';
 import { Routes } from '../../models/routes.model';
 import express from 'express';
+import { validate } from '../../middleware/validate';
 
-export class ListsRoutes implements Routes<ListsController> {
+export class ListsRoutes implements Routes<ListsController, ListsValidator> {
   readonly router: express.Router;
   readonly controller: ListsController;
+  readonly validator: ListsValidator;
 
   private routes = Router();
 
-  constructor(router: express.Router, controller: ListsController) {
+  constructor(
+    router: express.Router,
+    controller: ListsController,
+    validator: ListsValidator
+  ) {
     this.router = router;
     this.controller = controller;
+    this.validator = validator;
     this.init();
   }
 
@@ -62,12 +70,13 @@ export class ListsRoutes implements Routes<ListsController> {
      */
     this.routes.post(
       '/',
+      validate(this.validator.createListValidator),
       this.controller.createListHandler.bind(this.controller)
     );
 
     /**
      * @swagger
-     * /lists:
+     * /lists/{id}:
      *   put:
      *     tags:
      *       - lists
@@ -94,11 +103,15 @@ export class ListsRoutes implements Routes<ListsController> {
      *       '400':
      *         description: Bad request.
      */
-    this.routes.put('/', this.controller.editListHandler.bind(this.controller));
+    this.routes.put(
+      '/:id',
+      validate(this.validator.editListValidator),
+      this.controller.editListHandler.bind(this.controller)
+    );
 
     /**
      * @swagger
-     * /lists:
+     * /lists/{id}:
      *   delete:
      *     tags:
      *       - lists
@@ -120,7 +133,8 @@ export class ListsRoutes implements Routes<ListsController> {
      *         description: Something unexpected happened.
      */
     this.routes.delete(
-      '/',
+      '/:id',
+      validate(this.validator.deleteListValidator),
       this.controller.deleteListHandler.bind(this.controller)
     );
 
