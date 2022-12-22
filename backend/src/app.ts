@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 
 import { createContainer } from './container';
+import { errorHandler } from './middleware/error-handler';
 import helmet from 'helmet';
 import { logger } from './middleware/logger';
 import { swaggerSpec } from './docs/swagger';
@@ -32,7 +33,9 @@ export class App {
     this.server.use(logger);
   }
 
-  registerFallbacks(): void {}
+  registerFallbacks(): void {
+    this.server.use(errorHandler);
+  }
 
   registerRoutes(): void {
     // Service routes (this.router) are registered in container.ts via DI.
