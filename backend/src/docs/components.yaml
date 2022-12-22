@@ -1,0 +1,26 @@
+components:
+  schemas:
+    ListItemModel:
+      type: object
+      properties:
+        index:
+          type: integer
+        text:
+          type: string
+          example: 'Buy nimble soup.'
+        completed:
+          type: boolean
+    ListModel:
+      type: object
+      properties:
+        title:
+          type: string
+          example: 'Shopping List'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListItemModel'
+    ListModelList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ListItemModel'

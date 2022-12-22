@@ -12,7 +12,7 @@ let testApp: TestApp;
 let server: express.Application;
 
 describe('logger middleware', () => {
-  const validEndpoint = '/test';
+  const validEndpoint = '/api/docs';
   const invalidEndpoint = '/this-does-not-exist';
 
   afterEach(() => {

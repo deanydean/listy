@@ -3,6 +3,8 @@ import express, { Request, Response } from 'express';
 import { createContainer } from './container';
 import helmet from 'helmet';
 import { logger } from './middleware/logger';
+import { swaggerSpec } from './docs/swagger';
+import swaggerUI from 'swagger-ui-express';
 
 export class App {
   readonly server;
@@ -35,9 +37,6 @@ export class App {
   registerRoutes(): void {
     // Service routes (this.router) are registered in container.ts via DI.
     this.server.use('/api', this.router);
-
-    this.server.get('/test', async (req: Request, res: Response) => {
-      res.status(200).send('Server is running!');
-    });
+    this.server.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
   }
 }
