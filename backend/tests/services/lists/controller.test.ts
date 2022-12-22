@@ -1,7 +1,7 @@
 import { expect, it, jest } from '@jest/globals';
 import { getMockReq, getMockRes } from '@jest-mock/express';
 
-import { ListModel } from '../../../src/models/list.model';
+import { List } from '../../../src/models/list.model';
 import { Response } from '../../../src/models/response.model';
 import { createContainer } from '../../../src/container';
 import express from 'express';
@@ -17,11 +17,11 @@ const service = container.services.lists;
 describe('services/lists/controller', () => {
   describe('getListsHandler', () => {
     it('responds with status code 200 and the value from getLists() if successful', async () => {
-      const list: ListModel = {
+      const list: List = {
         title: 'test',
         items: [],
       };
-      const lists = new Response<ListModel[]>({ status: 200, data: [list] });
+      const lists = new Response<List[]>({ status: 200, data: [list] });
       jest.spyOn(service.repository, 'getLists').mockResolvedValueOnce(lists);
       await service.controller.getListsHandler(req, res, next);
       expect(service.repository.getLists).toHaveBeenCalled();

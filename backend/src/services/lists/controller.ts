@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 
 import { Controller } from '../../models/controller.model';
-import { ListModel } from '../../models/list.model';
+import { List } from '../../models/list.model';
 import { ListsRepository } from './repository';
 
 export class ListsController implements Controller<ListsRepository> {
@@ -31,7 +31,7 @@ export class ListsController implements Controller<ListsRepository> {
     next: NextFunction
   ): Promise<void> {
     try {
-      const newList: ListModel = req.body;
+      const newList: List = req.body;
       const response = await this.repo.createList(newList);
       res.status(response.status).send(response.data);
     } catch (error) {
@@ -46,7 +46,7 @@ export class ListsController implements Controller<ListsRepository> {
   ): Promise<void> {
     try {
       const id = req.params.id;
-      const newList: ListModel = req.body;
+      const newList: List = req.body;
       const response = await this.repo.editList(id, newList);
       res.status(response.status).send(response.data);
     } catch (error) {

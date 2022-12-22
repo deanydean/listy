@@ -1,8 +1,8 @@
-import { ListItemModel } from './list-item.model';
+import { ListItem } from './list-item.model';
 import { ObjectId } from 'mongodb';
 
-export interface ListModel {
+export interface List {
   _id?: ObjectId;
   title: string;
-  items: ListItemModel[];
+  items: ListItem[];
 }

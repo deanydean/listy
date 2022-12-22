@@ -1,4 +1,4 @@
-export interface ListItemModel {
+export interface ListItem {
   index: number;
   text: string;
   completed: boolean;

@@ -1,4 +1,3 @@
-import { ListsRoutes } from './services/lists/routes';
 import { createContainer } from './container';
 import { errorHandler } from './middleware/error-handler';
 import express from 'express';

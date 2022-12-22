@@ -1,5 +1,5 @@
 import { Db } from '../../models/db.model';
-import { ListModel } from '../../models/list.model';
+import { List } from '../../models/list.model';
 import { Repository } from '../../models/repository.model';
 import { Response } from '../../models/response.model';
 
@@ -10,15 +10,15 @@ export class ListsRepository implements Repository {
     this.db = database;
   }
 
-  getLists(): Promise<Response<ListModel[]>> {
+  getLists(): Promise<Response<List[]>> {
     return this.db.getAllRecords('lists');
   }
 
-  createList(newList: ListModel): Promise<Response<string>> {
+  createList(newList: List): Promise<Response<string>> {
     return this.db.createRecord('lists', newList);
   }
 
-  editList(id: string, updatedList: ListModel): Promise<Response<string>> {
+  editList(id: string, updatedList: List): Promise<Response<string>> {
     return this.db.editRecordById('lists', id, updatedList);
   }
 

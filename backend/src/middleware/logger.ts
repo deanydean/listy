@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { LogModel } from '../models/log.model';
+import { Log } from '../models/log.model';
 
 export const logger = (
   req: Request,
@@ -16,7 +16,7 @@ export const logger = (
 };
 
 export const createLog = (req: Request, res: Response): void => {
-  const log: LogModel = {
+  const log: Log = {
     timestamp: Date.now(),
     status: res.statusCode,
     method: req.method,

@@ -1,6 +1,6 @@
 import { ObjectId } from 'mongodb';
 
-export interface LogModel {
+export interface Log {
   _id?: ObjectId;
   timestamp: number;
   status: number;
