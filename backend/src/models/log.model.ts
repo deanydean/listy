@@ -1,10 +1,10 @@
-import { ObjectId } from 'mongodb'
+import { ObjectId } from 'mongodb';
 
 export interface LogModel {
-  _id?: ObjectId
-  timestamp: number
-  status: number
-  method: string
-  endpoint: string
-  params: any
+  _id?: ObjectId;
+  timestamp: number;
+  status: number;
+  method: string;
+  endpoint: string;
+  params: any;
 }
