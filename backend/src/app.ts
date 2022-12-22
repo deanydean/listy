@@ -1,15 +1,18 @@
 import express, { Request, Response } from 'express';
 
+import { createContainer } from './container';
 import helmet from 'helmet';
 import { logger } from './middleware/logger';
 
 export class App {
   readonly server;
+  readonly container;
   private readonly router;
 
-  constructor() {
+  constructor(useTestDb: boolean = false) {
     this.server = express();
     this.router = express.Router();
+    this.container = createContainer(useTestDb);
 
     this.setHeaders();
     this.registerMiddleware();
