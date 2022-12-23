@@ -34,7 +34,7 @@ describe('ApiService', () => {
         url: `${baseUrl}/test/id_1`,
         method: Method.PUT,
         data: { test: 'test' },
-        headers: { contentType: ContentType.APPLICATION_JSON },
+        headers: { 'content-type': ContentType.APPLICATION_JSON },
         timeout: 5000,
       };
       await apiService.apiPut('test', 'id_1', { test: 'test' });
@@ -48,7 +48,7 @@ describe('ApiService', () => {
         url: `${baseUrl}/test`,
         method: Method.POST,
         data: { test: 'test' },
-        headers: { contentType: ContentType.APPLICATION_JSON },
+        headers: { 'content-type': ContentType.APPLICATION_JSON },
         timeout: 5000,
       };
       await apiService.apiPost('test', { test: 'test' });

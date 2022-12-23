@@ -35,7 +35,7 @@ export class ApiService {
       url: `${baseUrl}/${endpoint}/${id}`,
       method: Method.PUT,
       headers: {
-        contentType: ContentType.APPLICATION_JSON,
+        'content-type': ContentType.APPLICATION_JSON,
       },
       data: body,
       timeout: this.timeout,
@@ -49,7 +49,7 @@ export class ApiService {
       url: `${baseUrl}/${endpoint}`,
       method: Method.POST,
       headers: {
-        contentType: ContentType.APPLICATION_JSON,
+        'content-type': ContentType.APPLICATION_JSON,
       },
       data: body,
       timeout: this.timeout,

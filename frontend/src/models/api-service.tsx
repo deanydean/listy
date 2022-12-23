@@ -18,5 +18,5 @@ export enum ContentType {
 }
 
 export interface Headers {
-  contentType?: ContentType;
+  'content-type'?: ContentType;
 }
