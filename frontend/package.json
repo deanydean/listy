@@ -79,6 +79,11 @@
     "prop-types": "^15.8.1",
     "webpack": "^5.75.0"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
+  },
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 2,
