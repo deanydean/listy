@@ -8,7 +8,7 @@ export class MongoDb implements Db {
   readonly _db: mongo.Db;
 
   constructor() {
-    //@ts-expect-error [env variables are validated in index.ts]
+    // @ts-expect-error [env variables are validated in index.ts]
     const client = new mongo.MongoClient(process.env.DB_URI);
     client
       .connect()
