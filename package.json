@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npm-run-all test:backend test:frontend",
-    "test:coverage": "npm-run-all test:coverage:backend",
-    "test:coverage:backend": "cd backend && npm run build && jest --coverage",
+    "test:coverage": "npm-run-all test:coverage:backend test:coverage:frontend",
+    "test:coverage:backend": "cd backend && npm run test:coverage",
+    "test:coverage:frontend": "cd frontend && npm run test:coverage",
     "prepare": "husky install",
     "test:backend": "cd backend && npm run test",
     "test:frontend": "cd frontend && npm run test",
