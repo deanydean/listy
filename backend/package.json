@@ -54,7 +54,13 @@
       "sourceType": "module",
       "project": "./tsconfig.json"
     },
-    "rules": {}
+    "rules": {
+      "@typescript-eslint/semi": 0,
+      "@typescript-eslint/member-delimiter-style": 0,
+      "@typescript-eslint/comma-dangle": 0,
+      "space-before-function-paren": "off",
+      "@typescript-eslint/space-before-function-paren": "off"
+    }
   },
   "jest": {
     "preset": "ts-jest",

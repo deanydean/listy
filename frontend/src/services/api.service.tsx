@@ -30,7 +30,11 @@ export class ApiService {
     return await this.service.callExternalApi(options);
   }
 
-  async apiPut(endpoint: string, id: string, body: object) {
+  async apiPut(
+    endpoint: string,
+    id: string,
+    body: object
+  ): Promise<ApiResponse> {
     const options: AxiosRequestConfig = {
       url: `${baseUrl}/${endpoint}/${id}`,
       method: Method.PUT,
@@ -44,7 +48,7 @@ export class ApiService {
     return await this.service.callExternalApi(options);
   }
 
-  async apiPost(endpoint: string, body: object) {
+  async apiPost(endpoint: string, body: object): Promise<ApiResponse> {
     const options: AxiosRequestConfig = {
       url: `${baseUrl}/${endpoint}`,
       method: Method.POST,
@@ -58,7 +62,7 @@ export class ApiService {
     return await this.service.callExternalApi(options);
   }
 
-  apiDelete = async (endpoint: string, id: string) => {
+  async apiDelete(endpoint: string, id: string): Promise<ApiResponse> {
     const options: AxiosRequestConfig = {
       url: `${this.baseUrl}/${endpoint}/${id}`,
       method: Method.DEL,
@@ -66,7 +70,7 @@ export class ApiService {
     };
 
     return await this.service.callExternalApi(options);
-  };
+  }
 }
 
 // @ts-expect-error [baseUrl is an env variable]

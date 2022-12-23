@@ -1,17 +1,19 @@
 import ListItem, { ListItemProps } from './list-item';
 
-export type ListProps = {
+import React from 'react';
+
+export interface ListProps {
   title: string;
   items: ListItemProps[];
-};
+}
 
-const List = ({ title, items }: ListProps) => {
+const List = ({ title, items }: ListProps): JSX.Element => {
   return (
     <>
       <div>{title}</div>
-      {items.map((item) => {
+      {items.map((item, index) => {
         return (
-          <div>
+          <div key={index}>
             <ListItem text={item.text} complete={item.complete} />
           </div>
         );

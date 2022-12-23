@@ -1,8 +1,12 @@
 import { ApiResponse, Method } from '../models/api-service';
-import axios, { AxiosError, AxiosResponse, AxiosStatic } from 'axios';
+import axios, {
+  AxiosError,
+  AxiosRequestConfig,
+  AxiosResponse,
+  AxiosStatic,
+} from 'axios';
 import { expect, it, jest } from '@jest/globals';
 
-import { AxiosRequestConfig } from 'axios';
 import externalApiService from './external-api.service';
 
 const baseUrl = process.env.REACT_APP_API_SERVER_URL;

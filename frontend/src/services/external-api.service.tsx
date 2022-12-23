@@ -25,11 +25,12 @@ export class ExternalApiService {
 
       let message = 'request failed';
 
-      if (response && response.statusText) {
+      if (response?.statusText !== null) {
+        // @ts-expect-error [ts thinks response can be null]
         message = response.statusText;
       }
 
-      if (axiosError.message) {
+      if (axiosError.message !== null) {
         message = axiosError.message;
       }
 
@@ -38,7 +39,7 @@ export class ExternalApiService {
         error: {
           message,
         },
-        status: (error as AxiosError).response?.status || 'timeout',
+        status: (error as AxiosError).response?.status ?? 'timeout',
       };
     }
 

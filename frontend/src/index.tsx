@@ -3,10 +3,9 @@ import './globals.css';
 import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import defaultTheme from '../src/theme';
 import reportWebVitals from './reportWebVitals';
-import styled from 'styled-components';
 
 const StyledMain = styled.main`
   max-width: ${(props) => props.theme.sizes.contentMaxWidth};
