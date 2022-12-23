@@ -8,7 +8,8 @@ export class MongoDb implements Db {
   readonly _db: mongo.Db;
 
   constructor() {
-    const client = new mongo.MongoClient(process.env.DB_URI ?? '');
+    //@ts-expect-error [env variables are validated in index.ts]
+    const client = new mongo.MongoClient(process.env.DB_URI);
     client
       .connect()
       .then(() => console.info('Connected to mongodb successfully.'))

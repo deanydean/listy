@@ -6,7 +6,8 @@ config();
 if (
   process.env.PORT === undefined ||
   process.env.DB_URI === undefined ||
-  process.env.DB_NAME === undefined
+  process.env.DB_NAME === undefined ||
+  process.env.CLIENT_ORIGIN_URL === undefined
 ) {
   throw new Error('Missing required environment variables.');
 }

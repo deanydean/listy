@@ -1,6 +1,8 @@
+import express, { NextFunction, Request, Response } from 'express';
+
+import cors from 'cors';
 import { createContainer } from './container';
 import { errorHandler } from './middleware/error-handler';
-import express from 'express';
 import helmet from 'helmet';
 import { logger } from './middleware/logger';
 import { notFound } from './middleware/not-found';
@@ -10,13 +12,14 @@ import swaggerUI from 'swagger-ui-express';
 export class App {
   readonly server;
   readonly container;
+  readonly allowedOrigins;
   private readonly router;
 
   constructor(useTestDb: boolean = false) {
     this.server = express();
     this.router = express.Router();
     this.container = createContainer(this.router, useTestDb);
-
+    this.allowedOrigins = process.env.CLIENT_ORIGIN_URL;
     this.setHeaders();
     this.registerMiddleware();
     this.registerRoutes();
@@ -24,6 +27,11 @@ export class App {
   }
 
   setHeaders(): void {
+    this.server.use((req: Request, res: Response, next: NextFunction) => {
+      //@ts-expect-error [env variables are validated in index.ts]
+      res.setHeader('Access-Control-Allow-Origin', this.allowedOrigins);
+      next();
+    });
     this.server.disable('x-powered-by');
   }
 
@@ -31,6 +39,14 @@ export class App {
     this.server.use(express.json());
     this.server.use(helmet());
     this.server.use(logger);
+    this.server.use(
+      cors({
+        origin: this.allowedOrigins,
+        preflightContinue: true,
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type'],
+      })
+    );
   }
 
   registerRoutes(): void {
