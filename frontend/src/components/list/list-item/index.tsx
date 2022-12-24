@@ -1,10 +1,8 @@
+import { ListItem as ListItemModel } from '../../../models/list';
 import React from 'react';
 
-export interface ListItemProps {
-  text: string;
-  complete: boolean;
-}
-
-const ListItem = ({ text }: ListItemProps): JSX.Element => <div>{text}</div>;
+const ListItem = (listItem: ListItemModel): JSX.Element => (
+  <div>{listItem.text}</div>
+);
 
 export default ListItem;
