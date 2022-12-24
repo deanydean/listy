@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
+import { List } from './models/list';
 import apiService from './services/api.service';
 
 function App(): JSX.Element {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<List[]>();
 
   const fetchData = async (): Promise<void> => {
     await apiService
       .apiGet('lists')
-      // @ts-expect-error
-      .then((res) => setItems(res.data))
+      .then((res) => setItems(res.data as List[]))
       .catch((err) => {
         console.error(err);
       });
@@ -21,21 +21,7 @@ function App(): JSX.Element {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
       {items?.map((items, index) => (
-        // ts-ignore
         <p key={index}>{items.title}</p>
       ))}
     </div>
