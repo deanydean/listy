@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import AddList from './components/add-list';
 import { List } from './models/list';
 import apiService from './services/api.service';
 
@@ -19,8 +20,11 @@ function App(): JSX.Element {
     fetchData().catch((err) => console.error(err));
   }, []);
 
+  const handleOnClick = (): void => {};
+
   return (
-    <div className="App">
+    <div>
+      <AddList />
       {items?.map((items, index) => (
         <p key={index}>{items.title}</p>
       ))}
