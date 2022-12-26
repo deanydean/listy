@@ -25,7 +25,7 @@ export class ExternalApiService {
 
       let message = 'request failed';
 
-      if (response && response.statusText) {
+      if (response != null && response.statusText) {
         message = response.statusText;
       }
 
