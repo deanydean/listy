@@ -55,7 +55,6 @@
         ],
         "rules": {
           "@typescript-eslint/explicit-function-return-type": "off",
-          "@typescript-eslint/strict-boolean-expressions": "off",
           "@typescript-eslint/no-floating-promises": "off"
         }
       },
@@ -84,7 +83,9 @@
       "space-before-function-paren": "off",
       "@typescript-eslint/space-before-function-paren": "off",
       "@typescript-eslint/triple-slash-reference": "off",
-      "@typescript-eslint/restrict-template-expressions": "off"
+      "@typescript-eslint/restrict-template-expressions": "off",
+      "@typescript-eslint/strict-boolean-expressions": "off",
+      "@typescript-eslint/prefer-optional-chain": "off"
     }
   },
   "browserslist": {

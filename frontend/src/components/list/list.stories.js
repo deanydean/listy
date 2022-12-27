@@ -1,5 +1,5 @@
 import List from '.';
-import ListItem from './list-item';
+import React from 'react';
 
 export const ListStory = (args) => <List {...args} />;
 

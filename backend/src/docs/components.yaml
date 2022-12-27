@@ -3,8 +3,6 @@ components:
     ListItemModel:
       type: object
       properties:
-        index:
-          type: integer
         text:
           type: string
           example: 'Buy nimble soup.'

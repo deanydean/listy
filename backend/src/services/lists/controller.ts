@@ -47,6 +47,9 @@ export class ListsController implements Controller<ListsRepository> {
     try {
       const id = req.params.id;
       const newList: List = req.body;
+      if (newList._id) {
+        delete newList._id;
+      }
       const response = await this.repo.editList(id, newList);
       res.status(response.status).send(response.data);
     } catch (error) {
