@@ -1,9 +1,9 @@
+import { ListItem as ListItemModel } from '../../../models/list';
 import React from 'react';
 import styled from 'styled-components';
 
 export interface ListItemProps {
-  text: string;
-  completed: boolean;
+  listItem: ListItemModel;
   completedHandler: Function;
   deleteHandler: Function;
 }
@@ -16,8 +16,7 @@ const StyledListItem = styled.span<StyledListItemProps>`
 `;
 
 const ListItem = ({
-  text,
-  completed,
+  listItem,
   completedHandler,
   deleteHandler,
 }: ListItemProps): JSX.Element => {
@@ -25,12 +24,14 @@ const ListItem = ({
     <>
       <div>
         <StyledListItem
-          completed={completed}
+          completed={listItem.completed}
           onClick={() => completedHandler()}
         >
-          {text}
+          {listItem.text}
         </StyledListItem>
-        <button onClick={() => deleteHandler()}>X</button>
+        {listItem.completed && (
+          <button onClick={() => deleteHandler()}>X</button>
+        )}
       </div>
     </>
   );

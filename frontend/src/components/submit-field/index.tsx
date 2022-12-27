@@ -19,7 +19,7 @@ const SubmitField = ({
 
   const handleSubmit = (): void => {
     if (text.length > 0) {
-      submitHandler();
+      submitHandler(text);
       setText('');
     }
   };

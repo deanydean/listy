@@ -3,8 +3,8 @@ export interface List {
   title: string;
   items: ListItem[];
 }
+
 export interface ListItem {
-  index: number;
   text: string;
   completed: boolean;
 }
