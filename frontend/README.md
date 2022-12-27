@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+> **Note:** The best way to run the app is via docker, as the API will fail to connect to the dockerised database using the following commands. See the root README for more info. 
+
 ## Available Scripts
 
 In the project directory, you can run:
