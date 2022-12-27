@@ -43,6 +43,8 @@ Technical features include:
   - swagger docs: http://localhost:4500/api/docs
 
 
+> If the app stops working in the sense that lists aren't loading and you can't create new ones, verify that the DB_URI hasn't changed by comparing the value in `./backend/.env` and the output of `make db-ip`
+
 ## Running the Tests
 
 Tests are written with Jest and React Testing Library, and can be run via npm scripts from the root, backend, and frontend directories OR with the following *make* commands:
@@ -58,6 +60,8 @@ I have left various 'TODO' comments in the codebase  as indications of where I'd
 From the testing perspective, the addition of some E2E framework e.g. Playwright or Cucumber to test behaviours and use journeys would be desirable. In a real world scenario, we'd also want to implement some form of load testing, e.g. with K6.
 
 In terms of code and features, an auth implementation to protect endpoints and only show user's their own lists would be a good next step. There are also refactors that could be made to things like the DI implementation and the way the React app interacts with the API.
+
+Finally, I'd have put more effort into the frontend design.
 
 ### Challenges
 The biggest difficulty in completing this project was trying to avoid  javascript patterns in favour of utilising typescript, after a couple of years of not using it (and having exclusively used it in Angular projects before then). In particular, this made writing tests slow painful as the mocking patterns and so on that I'm familiar with would not work. It was also my first time using react testing library. 

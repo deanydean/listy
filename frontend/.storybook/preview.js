@@ -1,10 +1,13 @@
+import { ListsProvider } from '../src/hooks/useLists';
 import { ThemeProvider } from 'styled-components';
 import defaultTheme from '../src/theme';
 
 export const decorators = [
   (Story, context) => (
     <ThemeProvider theme={defaultTheme}>
-      <Story />
+      <ListsProvider>
+        <Story />
+      </ListsProvider>
     </ThemeProvider>
   ),
 ];

@@ -1,7 +1,10 @@
-import React from 'react';
-import SubmitField from '.';
+import SubmitField, { SubmitFieldProps } from '.';
 
-export const SubmitFieldStory = (args) => <SubmitField {...args} />;
+import React from 'react';
+
+export const SubmitFieldStory = (args: SubmitFieldProps): JSX.Element => (
+  <SubmitField {...args} />
+);
 
 SubmitFieldStory.args = {
   placeholder: 'Enter text and press enter...',

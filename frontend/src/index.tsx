@@ -11,8 +11,9 @@ import reportWebVitals from './reportWebVitals';
 
 const StyledMain = styled.main`
   max-width: ${(props) => props.theme.sizes.contentMaxWidth};
-  padding: 0 ${(props) => props.theme.sizes.spacing.xs};
+  padding: 0 ${(props) => props.theme.sizes.spacing.l};
   margin: 0 auto;
+  margin-top: ${(props) => props.theme.fonts.sizes.l};
   margin-bottom: 120px;
   font-family: ${(props) => props.theme.fonts.body};
   font-size: ${(props) => props.theme.fonts.sizes.s};

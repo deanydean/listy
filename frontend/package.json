@@ -28,7 +28,7 @@
     "lint:fix": "eslint --fix src/*.{ts,tsx} && eslint --fix src/**/*.{ts,tsx}",
     "precommit": "npm run lint:fix && npm run prettier",
     "prepush": "npm run lint && npm run prettier",
-    "storybook": "start-storybook -p 6006 -s public",
+    "storybook": "DISABLE_ESLINT_PLUGIN=true start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
@@ -41,14 +41,6 @@
       "standard-with-typescript"
     ],
     "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      },
       {
         "files": [
           "src/reportWebVitals.ts"
