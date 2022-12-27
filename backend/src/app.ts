@@ -19,7 +19,8 @@ export class App {
     this.server = express();
     this.router = express.Router();
     this.container = createContainer(this.router, useTestDb);
-    this.allowedOrigins = process.env.CLIENT_ORIGIN_URL;
+    this.allowedOrigins =
+      process.env.CLIENT_ORIGIN_URL || 'http://localhost:3000';
     this.setHeaders();
     this.registerMiddleware();
     this.registerRoutes();
@@ -28,7 +29,6 @@ export class App {
 
   setHeaders(): void {
     this.server.use((req: Request, res: Response, next: NextFunction) => {
-      //@ts-expect-error [env variables are validated in index.ts]
       res.setHeader('Access-Control-Allow-Origin', this.allowedOrigins);
       next();
     });
