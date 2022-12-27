@@ -3,7 +3,7 @@ import { List as ListModel } from '../../models/list';
 import React from 'react';
 import SubmitField from '../submit-field';
 import styled from 'styled-components';
-import { useLists } from '../../hooks/useLists';
+import { useLists } from '../../hooks/use-lists';
 
 const StyledList = styled.div`
   margin: ${(props) => props.theme.sizes.spacing.l};

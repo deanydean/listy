@@ -51,22 +51,26 @@ test('renders ListItem text with strikethrough if the item is completed', () => 
 
 test('renders ListItem text without delete button if the item is incomplete', () => {
   render(
-    <ListItem
-      listItem={incompleteListItem}
-      deleteHandler={mockDeleteFn}
-      completedHandler={mockCompletedFn}
-    />
+    <ThemeProvider theme={theme}>
+      <ListItem
+        listItem={incompleteListItem}
+        deleteHandler={mockDeleteFn}
+        completedHandler={mockCompletedFn}
+      />
+    </ThemeProvider>
   );
   expect(screen.queryByRole('button')).toBeFalsy();
 });
 
 test('renders ListItem text with delete button if the item is completed', () => {
   render(
-    <ListItem
-      listItem={completeListItem}
-      deleteHandler={mockDeleteFn}
-      completedHandler={mockCompletedFn}
-    />
+    <ThemeProvider theme={theme}>
+      <ListItem
+        listItem={completeListItem}
+        deleteHandler={mockDeleteFn}
+        completedHandler={mockCompletedFn}
+      />
+    </ThemeProvider>
   );
   const element = screen.getByRole('button');
   expect(element).toBeInTheDocument();
@@ -74,11 +78,13 @@ test('renders ListItem text with delete button if the item is completed', () => 
 
 test('calls deleteHandler when the delete button is clicked', () => {
   render(
-    <ListItem
-      listItem={completeListItem}
-      deleteHandler={mockDeleteFn}
-      completedHandler={mockCompletedFn}
-    />
+    <ThemeProvider theme={theme}>
+      <ListItem
+        listItem={completeListItem}
+        deleteHandler={mockDeleteFn}
+        completedHandler={mockCompletedFn}
+      />
+    </ThemeProvider>
   );
   const element = screen.getByRole('button');
   userEvent.click(element);
@@ -87,11 +93,13 @@ test('calls deleteHandler when the delete button is clicked', () => {
 
 test('calls completedHandler when the list item is clicked', () => {
   render(
-    <ListItem
-      listItem={incompleteListItem}
-      deleteHandler={mockDeleteFn}
-      completedHandler={mockCompletedFn}
-    />
+    <ThemeProvider theme={theme}>
+      <ListItem
+        listItem={incompleteListItem}
+        deleteHandler={mockDeleteFn}
+        completedHandler={mockCompletedFn}
+      />
+    </ThemeProvider>
   );
   const element = screen.getByText('Nimble Soup');
   userEvent.click(element);

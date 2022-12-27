@@ -2,7 +2,7 @@ import List from './components/list';
 import React from 'react';
 import SubmitField from './components/submit-field';
 import styled from 'styled-components';
-import { useLists } from './hooks/useLists';
+import { useLists } from './hooks/use-lists';
 
 const StyledHeader = styled.h1`
   font-size: ${(props) => props.theme.fonts.sizes.xl};

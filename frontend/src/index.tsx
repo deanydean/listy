@@ -3,7 +3,7 @@ import './globals.css';
 import styled, { ThemeProvider } from 'styled-components';
 
 import App from './App';
-import { ListsProvider } from './hooks/useLists';
+import { ListsProvider } from './hooks/use-lists';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import defaultTheme from '../src/theme';
