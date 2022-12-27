@@ -1,9 +1,11 @@
 import './globals.css';
 
+import styled, { ThemeProvider } from 'styled-components';
+
 import App from './App';
+import { ListsProvider } from './hooks/useLists';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import styled, { ThemeProvider } from 'styled-components';
 import defaultTheme from '../src/theme';
 import reportWebVitals from './reportWebVitals';
 
@@ -24,7 +26,9 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={defaultTheme}>
       <StyledMain>
-        <App />
+        <ListsProvider>
+          <App />
+        </ListsProvider>
       </StyledMain>
     </ThemeProvider>
   </React.StrictMode>

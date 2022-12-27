@@ -1,32 +1,22 @@
-import React, { useEffect, useState } from 'react';
-
-import AddList from './components/add-list';
-import { List } from './models/list';
-import apiService from './services/api.service';
+import List from './components/list';
+import React from 'react';
+import SubmitField from './components/submit-field';
+import { useLists } from './hooks/useLists';
 
 function App(): JSX.Element {
-  const [items, setItems] = useState<List[]>();
-
-  const fetchData = async (): Promise<void> => {
-    await apiService
-      .apiGet('lists')
-      .then((res) => setItems(res.data as List[]))
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
-  useEffect(() => {
-    fetchData().catch((err) => console.error(err));
-  }, []);
-
-  const handleOnClick = (): void => {};
+  // TODO: tests to check controls call the functions
+  const { lists, createList } = useLists();
 
   return (
     <div>
-      <AddList />
-      {items?.map((items, index) => (
-        <p key={index}>{items.title}</p>
+      <SubmitField
+        placeholder="Add new list..."
+        maxLength={60}
+        submitHandler={(text: string) => createList({ title: text, items: [] })}
+      />
+      {/* Render lists */}
+      {lists?.map((list, index) => (
+        <List key={index} list={list} />
       ))}
     </div>
   );
