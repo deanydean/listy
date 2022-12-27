@@ -24,7 +24,8 @@ const StyledDeleteButton = styled.div`
   font-family: ${(props) => props.theme.fonts.family.info};
   font-size: ${(props) => props.theme.fonts.sizes.s};
   color: ${(props) => props.theme.colours.textWarn};
-  margin: ${(props) => props.theme.sizes.spacing.m} ${(props) => props.theme.sizes.spacing.s};
+  margin: ${(props) => props.theme.sizes.spacing.m} ${(props) =>
+  props.theme.sizes.spacing.s};
 
   :hover{
     color: ${(props) => props.theme.colours.textAlert};
