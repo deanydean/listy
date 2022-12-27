@@ -1,18 +1,35 @@
 import ListItem from './list-item';
 import { List as ListModel } from '../../models/list';
 import React from 'react';
+import SubmitField from '../submit-field';
+import { useLists } from '../../hooks/useLists';
 
-const List = (list: ListModel): JSX.Element => {
+interface ListProps {
+  list: ListModel;
+}
+
+const List = ({ list }: ListProps): JSX.Element => {
+  // TODO: tests to check controls call the functions
+  const { deleteList, addListItem, deleteListItem, toggleListItemComplete } =
+    useLists();
+
   return (
     <>
       <div>{list.title}</div>
-      {list.items.map((item, index) => {
+      <div onClick={() => deleteList(list._id)}>Delete this list?</div>
+      <SubmitField
+        placeholder="Add list item..."
+        maxLength={150}
+        submitHandler={(e: any) => addListItem(list, e)}
+      />
+      {/* Render list items */}
+      {list?.items?.map((item, index) => {
         return (
           <div key={index}>
             <ListItem
-              text={item.text}
-              completed={item.completed}
-              index={item.index}
+              listItem={item}
+              completedHandler={() => toggleListItemComplete(list, index)}
+              deleteHandler={() => deleteListItem(list, index)}
             />
           </div>
         );
