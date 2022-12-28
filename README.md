@@ -64,4 +64,4 @@ In terms of code and features, an auth implementation to protect endpoints and o
 Finally, I'd have put more effort into the frontend design.
 
 ### Challenges
-The biggest difficulty in completing this project was trying to avoid  javascript patterns in favour of utilising typescript, after a couple of years of not using it (and having exclusively used it in Angular projects before then). In particular, this made writing tests slow painful as the mocking patterns and so on that I'm familiar with would not work. It was also my first time using react testing library. 
+The biggest difficulty in completing this project was trying to avoid using javascript patterns in favour of utilising typescript, after a couple of years of not using TS (and having exclusively used it in Angular projects before then). In particular, this made writing tests slow and painful as the mocking patterns and so on that I'm familiar with, often would not work. It was also my first time using react testing library and the convention of only testing *what the user sees* felt was difficult to adopt.
